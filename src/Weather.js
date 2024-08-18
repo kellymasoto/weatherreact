@@ -32,7 +32,7 @@ export default function Weather(props) {
   }
 
   function search() {
-    const apiKey = "eac360db5fc86ft86450f3693e73o43f";
+    const apiKey = "5f472b7acba333cd8a035ea85a0d4d4c";
     let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
     axios.get(apiUrl).then(handleResponse);
   }
@@ -69,29 +69,3 @@ export default function Weather(props) {
     return "Loading...";
   }
 }
-<footer>
-  This project was coded by{" "}
-  <a
-    href="https://github.com/kellymasoto"
-    target="_blank"
-    rel="noopener noreferrer"
-  >
-    Kelly Masoto
-  </a>{" "}
-  and is{" "}
-  <a
-    href="https://github.com/kellymasoto/weatherreact"
-    target="_blank"
-    rel="noopener noreferrer"
-  >
-    open-sourced on GitHub
-  </a>{" "}
-  and{" "}
-  <a
-    href="https://maskel.netlify.app/"
-    target="_blank"
-    rel="noopener noreferrer"
-  >
-    hosted on Netlify
-  </a>
-</footer>;
