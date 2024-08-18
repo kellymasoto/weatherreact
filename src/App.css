@@ -1,8 +1,24 @@
 body {
-  background: #f9f7fe;
+  background: linear-gradient(
+    180deg,
+    rgb(219, 246, 251) 14.9%,
+    rgba(147, 225, 241) 80%
+  );
+  background-size: auto;
+  background-repeat: no-repeat;
+  display: flex;
+  justify-content: center;
+  padding-bottom: 400px;
+  max-width: 100%;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 .App {
-  max-width: 800px;
-  margin: 60px auto;
+  max-width: 600px;
+  margin: 30px auto;
+}
+
+.App footer {
+  font-size: 11px;
+  margin: 10px 0;
 }
