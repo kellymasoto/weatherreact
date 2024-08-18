@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import "./WeatherForecast.css";
 import axios from "axios";
+import "./WeatherForecast.css";
 import WeatherForecastPreview from "./WeatherForecastPreview";
 
 export default function WeatherForecast(props) {
@@ -17,15 +17,16 @@ export default function WeatherForecast(props) {
   }
 
   function load() {
-    let apiKey = "5f472b7acba333cd8a035ea85a0d4d4c";
-    let longitude = props.coordinates.lon;
-    let latitude = props.coordinates.lat;
-    let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=metric`;
+    let apiKey = "af7fdt6fa4f53b42o7a4a46850bd8911";
+    let latitude = props.coordinates.latitude;
+    let longitude = props.coordinates.longitude;
+    let apiUrl = `https://api.shecodes.io/weather/v1/forecast?lon=${longitude}&lat=${latitude}&key=${apiKey}`;
 
     axios.get(apiUrl).then(handleResponse);
   }
 
   if (loaded) {
+    console.log(forecast);
     return (
       <div className="WeatherForecast">
         <div className="row">
@@ -45,7 +46,6 @@ export default function WeatherForecast(props) {
     );
   } else {
     load();
-
     return null;
   }
 }

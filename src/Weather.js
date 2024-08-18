@@ -5,21 +5,26 @@ import axios from "axios";
 import "./WeatherApp.css";
 
 export default function Weather(props) {
-  const [weatherData, setWeatherData] = useState({ ready: false });
+  const [weatherData, setweatherData] = useState({ ready: false });
   const [city, setCity] = useState(props.defaultCity);
-
   function handleResponse(response) {
-    setWeatherData({
+    setweatherData({
       ready: true,
-      coordinates: response.data.coord,
-      temperature: response.data.main.temp,
-      humidity: response.data.main.humidity,
-      date: new Date(response.data.dt * 1000),
-      description: response.data.weather[0].description,
-      icon: response.data.weather[0].icon,
+      coordinates: response.data.coordinates,
+      temperature: response.data.temperature.current,
+      city: response.data.city,
+      date: new Date(response.data.time * 1000),
+      description: response.data.condition.description,
+      humidity: response.data.temperature.humidity,
       wind: response.data.wind.speed,
-      city: response.data.name,
+      icon: response.data.condition.icon_url,
     });
+  }
+
+  function search() {
+    const apiKey = "af7fdt6fa4f53b42o7a4a46850bd8911";
+    let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&unit=metric`;
+    axios.get(apiUrl).then(handleResponse);
   }
 
   function handleSubmit(event) {
@@ -31,12 +36,6 @@ export default function Weather(props) {
     setCity(event.target.value);
   }
 
-  function search() {
-    const apiKey = "5f472b7acba333cd8a035ea85a0d4d4c";
-    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
-    axios.get(apiUrl).then(handleResponse);
-  }
-
   if (weatherData.ready) {
     return (
       <div className="Weather">
@@ -45,7 +44,7 @@ export default function Weather(props) {
             <div className="col-9">
               <input
                 type="search"
-                placeholder="Enter a city.."
+                placeholder="Enter a city..."
                 className="form-control"
                 autoFocus="on"
                 onChange={handleCityChange}
