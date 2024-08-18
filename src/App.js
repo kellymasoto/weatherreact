@@ -27,7 +27,7 @@ export default function App() {
           </a>{" "}
           and{" "}
           <a
-            href="https://maskel.netlify.app/"
+            href="https://maskel.netlify.app/?"
             target="_blank"
             rel="noopener noreferrer"
           >
